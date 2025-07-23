@@ -51,9 +51,11 @@ export async function subscribe(data: NewsletterFormInputs) {
             audienceId: process.env.RESEND_AUDIENCE_ID as string
         })
 
-        if (!data || error) {
-            throw new Error('Failed to subscribe')
-        }
+
+        // if (!data || error) {
+        //     throw new Error('Failed to subscribe')
+        // }
+        console.log(data, error)
 
         // TODO: Send a welcome email
 

@@ -1,4 +1,5 @@
 import Intro from '@/components/intro'
+import NewsletterForm from '@/components/newletter-form'
 import RecentPosts from '@/components/recent-posts'
 import RecentProjects from '@/components/recent-projects'
 import React from 'react'
@@ -10,6 +11,7 @@ export default function Page() {
         <Intro />
         <RecentPosts />
         <RecentProjects />
+        <NewsletterForm />
       </div>
     </section>
   )

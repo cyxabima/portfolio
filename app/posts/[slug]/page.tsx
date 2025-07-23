@@ -1,4 +1,5 @@
 import MDXContent from '@/components/mdx-content';
+import NewsletterForm from '@/components/newletter-form';
 import { getPostBySlug } from '@/lib/posts';
 import { formatDate } from '@/lib/utils';
 import { ArrowLeftIcon } from 'lucide-react';
@@ -49,7 +50,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
                 </main>
 
                 <footer className='mt-16'>
-                    {/* <NewsletterForm /> */}
+                    <NewsletterForm />
                 </footer>
             </div>
         </section>
