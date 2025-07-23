@@ -1,12 +1,20 @@
 import MDXContent from '@/components/mdx-content';
 import NewsletterForm from '@/components/newletter-form';
-import { getPostBySlug } from '@/lib/posts';
+import { getPostBySlug, getPosts } from '@/lib/posts';
 import { formatDate } from '@/lib/utils';
 import { ArrowLeftIcon } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import React from 'react'
+
+
+export async function generateStaticParams() {
+    const posts = await getPosts()
+    const slugs = posts.map(post => ({ slug: post.slug }))
+
+    return slugs
+}
 
 export default async function PostPage({ params }: { params: Promise<{ slug: string }> }) {
     const { slug } = await params;
