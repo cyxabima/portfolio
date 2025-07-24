@@ -32,7 +32,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
             url: `https://ukashaanwer.tech/posts/${slug}`,
             images: [
                 {
-                    url: post.metadata.image,
+                    url: `https://ukashaanwer.tech/${post.metadata.image}`,
                     alt: post.metadata.title,
                 },
             ],
@@ -41,7 +41,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
             card: 'summary_large_image',
             title: post.metadata.title,
             description: post.metadata.summary,
-            images: [post.metadata.image],
+            images: [`https://ukashaanwer.tech/${post.metadata.image}`],
         },
     };
 
