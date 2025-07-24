@@ -14,6 +14,37 @@ export async function generateStaticParams() {
     return slugs
 }
 
+// SEO
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
+    const { slug } = await params;
+    const project = await getProjectBySlug(slug)
+    if (!project) notFound();
+    return {
+        title: project.metadata.title,
+        description: project.metadata.summary,
+        keywords: project.metadata.keywords, // 👈 here it is used
+        openGraph: {
+            title: project.metadata.title,
+            description: project.metadata.summary,
+            type: 'article',
+            url: `https://ukashaanwer.tech/projects/${slug}`,
+            images: [
+                {
+                    url: project.metadata.image,
+                    alt: project.metadata.title,
+                },
+            ],
+        },
+        twitter: {
+            card: 'summary_large_image',
+            title: project.metadata.title,
+            description: project.metadata.summary,
+            images: [project.metadata.image],
+        },
+    };
+
+}
+
 export default async function Project({ params }:
     {
         params: Promise<{ slug: string }>

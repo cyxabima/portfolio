@@ -14,6 +14,7 @@ export type PostMetadata = {
     author?: string,
     publishedAt?: string,
     slug: string
+    keywords?: string[]
 }
 
 

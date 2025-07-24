@@ -16,6 +16,37 @@ export async function generateStaticParams() {
     return slugs
 }
 
+// SEO
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
+    const { slug } = await params;
+    const post = await getPostBySlug(slug)
+    if (!post) notFound();
+    return {
+        title: post.metadata.title,
+        description: post.metadata.summary,
+        keywords: post.metadata.keywords, // 👈 here it is used
+        openGraph: {
+            title: post.metadata.title,
+            description: post.metadata.summary,
+            type: 'article',
+            url: `https://ukashaanwer.tech/posts/${slug}`,
+            images: [
+                {
+                    url: post.metadata.image,
+                    alt: post.metadata.title,
+                },
+            ],
+        },
+        twitter: {
+            card: 'summary_large_image',
+            title: post.metadata.title,
+            description: post.metadata.summary,
+            images: [post.metadata.image],
+        },
+    };
+
+}
+
 export default async function PostPage({ params }: { params: Promise<{ slug: string }> }) {
     const { slug } = await params;
     const post = await getPostBySlug(slug)
@@ -23,7 +54,6 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
 
     const { metadata, content } = post
     const { title, author, image, publishedAt } = metadata
-    console.log(image)
     return (
         <section className='pb-24 pt-32'>
             <div className='container max-w-3xl'>

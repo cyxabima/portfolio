@@ -55,7 +55,7 @@ export async function subscribe(data: NewsletterFormInputs) {
         // if (!data || error) {
         //     throw new Error('Failed to subscribe')
         // }
-        console.log(data, error)
+        // console.log(data, error)
 
         // TODO: Send a welcome email
 
