@@ -1,0 +1,157 @@
+---
+  title: All About Singly Linked List
+  summary: A Linked List is a linear data structure. It is simply a sequence of elements called Nodes.
+  image: /images/posts/linked-list.png
+  author: 'Ukasha'
+  publishedAt: '2025-08-31'
+---
+
+# Linked List 
+A Linked List is a linear data structure. It is simply a sequence of elements called Nodes.
+
+These Nodes are linked together in such a way that each Node holds a reference (or address) to another Node which is next in the sequence.
+
+
+## Node
+
+A Node typically consist of two components:
+- A variable that holds the **actual value/data**
+- A reference to the **next node**
+
+### A Simple Node Class 
+```python
+class Node:
+    def __init__(self, val):
+        self.val = val
+        self.next = None
+```
+
+## LinkedList Class
+
+Here is a simple LinkedList class with two methods:
+
+- A constructor to initialize the head of the linked list (without which traversal is not possible).
+
+- A string dunder method `(__str__)`to override the string representation of the list.
+
+
+ 
+```python
+class LinkedList:
+    def __init__(self):
+        self.head = None
+
+    def __str__(self):
+        temp = self.head
+        rep_str = "["
+
+        while temp is not None:
+            rep_str += str(temp.val) + ", "
+            temp = temp.next
+
+        rep_str = rep_str.rstrip(", ") + "]"
+        return rep_str
+```
+
+All the Other Methods are added dynamically. These includes:
+- push
+- pop
+- insert
+- remove
+---
+## Push Operation
+
+New Node can be added in two ways:
+ - when there is no Node
+ - when there is at least one Node
+  
+### Case 1: No Node
+
+This is the simplest case where we directly assign new node to the head of the linked list.
+
+### Case 2: Node Exits in the List
+
+In this case we must traverse the list to reach the last Node. The Last Node is the one whose `next` attribute is `None`. There is where we use `While loop`.
+
+In the loop body, we update a temp variable that was initialized to `self.head`.
+`temp` continues to move forward until it points to the last node — that is, until `temp.next` becomes None.
+
+### Implementation
+
+```python 
+def push(self, val):
+    new_node = Node(val)
+
+    # Case 1 no node
+    if self.head is None:
+        self.head = new_node
+        return
+
+    # Case 2 at least one node
+    temp = self.head
+    while temp.next is not None:
+        temp = temp.next
+
+    # now temp is pointing to the last node of the list
+    temp.next = new_node
+
+
+LinkedList.push = push
+```
+---
+## Pop Operation
+
+There are two cases in which a node can be popped from a linked list:
+
+* When there is **exactly one node** in the list
+* When there is **more than one node** in the list
+
+---
+
+### Case 1: Exactly One Node
+
+If there is only one node in the list, we simply remove the reference to the first node by setting `self.head = None`. The garbage collector will automatically clean up the node since no variable refers to it.
+
+However, if the programming language does **not** support garbage collection (like C or C++), you must manually free the memory to avoid memory leaks.
+
+---
+
+### Case 2: More than One Node
+
+In this case, we need to traverse the list to reach the last node. During traversal, we keep track of:
+
+* `temp`: the last node (node to be removed)
+* `prev`: the second-last node (node whose `next` will be set to `None`)
+
+Once the last node is reached, we set `prev.next = None`. Since no variable refers to the last node anymore, it becomes eligible for garbage collection. In languages without garbage collection, you'd need to free the memory manually.
+
+---
+
+### Implementation:
+
+```python
+def pop(self):
+    if self.head is None:
+        raise Exception("Can't pop from an empty list")
+
+    temp = self.head
+    prev = None
+
+    # Case 1: Exactly one node
+    if self.head.next is None:
+        self.head = None
+        return temp.val
+
+    # Case 2: More than one node
+    while temp.next is not None:
+        prev = temp
+        temp = temp.next
+
+    prev.next = None
+    return temp.val
+
+LinkedList.pop = pop
+```
+
+---
+
