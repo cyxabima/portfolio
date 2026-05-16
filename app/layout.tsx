@@ -70,19 +70,19 @@ export const metadata: Metadata = {
     shortcut: "/favicon-32x32.png", // optional
     apple: "/apple-touch-icon.png", // for iOS
   },
-  metadataBase: new URL("https://ukashaanwer.tech"),
-  authors: [{ name: "Ukasha Anwer", url: "https://ukashaanwer.tech" }],
-  creator: "Ukasha Anwer",
-  publisher: "Ukasha Anwer",
+  metadataBase: new URL("https://ukashaanwerali.dev"),
+  authors: [{ name: "Ukasha Anwer", url: "https://ukashaanwerali.dev" }],
+  creator: "Ukasha Anwer Ali",
+  publisher: "Ukasha Anwer Ali",
   openGraph: {
     title: "Ukasha Anwer — CSE Student @ NED | Portfolio",
     description:
       "Portfolio of Ukasha Anwer, a Computer Systems & Software Engineering student at NED University (Department of CIS), building full stack software projects with React, Next.js, and FastAPI.",
-    url: "https://ukashaanwer.tech",
+    url: "https://ukashaanwerali.dev",
     siteName: "Ukasha Anwer Portfolio",
     images: [
       {
-        url: "https://ukashaanwer.tech/og-image.png",
+        url: "https://ukashaanwerali.dev/og-image.png",
         width: 1200,
         height: 630,
         alt: "Ukasha Anwer Portfolio Preview",
@@ -97,7 +97,7 @@ export const metadata: Metadata = {
     description:
       "Explore the portfolio of Ukasha Anwer, a Computer Systems & Software Engineering student at NED University's CIS Department, passionate about building software with modern technologies like Python, React, and FastAPI.",
     creator: "@UkashAnwer", // Optional
-    images: ["https://ukashaanwer.tech/og-image.png"],
+    images: ["https://ukashaanwerali.dev/og-image.png"],
   },
   robots: {
     index: true,
