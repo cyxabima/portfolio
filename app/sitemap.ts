@@ -3,11 +3,11 @@ import { MetadataRoute } from 'next';
 import fs from 'fs';
 import path from 'path';
 
-// Change this to your live deployed production domain
-const BASE_URL = 'http://ukashaanwerali.dev';
+// Using your actual domain with HTTPS
+const BASE_URL = 'https://ukashaanwerali.dev';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  // 1. Static Core Routes based on your file tree
+  // 1. Core static routes
   const routes: MetadataRoute.Sitemap = [
     {
       url: BASE_URL,
@@ -23,47 +23,52 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
   ];
 
-  // 2. Generate Dynamic Post URLs
-  try {
-    const postsDirectory = path.join(process.cwd(), 'app/posts');
-    if (fs.existsSync(postsDirectory)) {
-      const postFolders = fs.readdirSync(postsDirectory);
+  // Helper function to extract slugs from the root content folder
+  const getSlugsFromContent = (subFolder: 'posts' | 'projects') => {
+    const slugList: string[] = [];
+    try {
+      // Anchors to your root 'content/posts' or 'content/projects' directory
+      const targetDirectory = path.join(process.cwd(), 'content', subFolder);
 
-      postFolders.forEach((folder) => {
-        if (!folder.startsWith('.') && fs.lstatSync(path.join(postsDirectory, folder)).isDirectory()) {
-          routes.push({
-            url: `${BASE_URL}/posts/${folder}`,
-            lastModified: new Date(),
-            changeFrequency: 'weekly',
-            priority: 0.7,
-          });
-        }
-      });
+      if (fs.existsSync(targetDirectory)) {
+        const files = fs.readdirSync(targetDirectory);
+
+        files.forEach((file) => {
+          // Process only markdown/mdx files and ignore hidden system files (like .DS_Store)
+          if (file.endsWith('.md') || file.endsWith('.mdx')) {
+            // Strip the file extension to get the raw URL slug
+            const slug = file.replace(/\.mdx?$/, '');
+            slugList.push(slug);
+          }
+        });
+      }
+    } catch (error) {
+      console.error(`Error reading content/${subFolder} for sitemap:`, error);
     }
-  } catch (error) {
-    console.error('Error parsing posts directory for sitemap:', error);
-  }
+    return slugList;
+  };
 
-  // 3. Generate Dynamic Project URLs
-  try {
-    const projectsDirectory = path.join(process.cwd(), 'app/projects');
-    if (fs.existsSync(projectsDirectory)) {
-      const projectFolders = fs.readdirSync(projectsDirectory);
+  // 2. Inject Dynamic Blog Post Slugs
+  const postSlugs = getSlugsFromContent('posts');
+  postSlugs.forEach((slug) => {
+    routes.push({
+      url: `${BASE_URL}/posts/${slug}`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.7,
+    },);
+  });
 
-      projectFolders.forEach((folder) => {
-        if (!folder.startsWith('.') && fs.lstatSync(path.join(projectsDirectory, folder)).isDirectory()) {
-          routes.push({
-            url: `${BASE_URL}/projects/${folder}`,
-            lastModified: new Date(),
-            changeFrequency: 'weekly',
-            priority: 0.8,
-          });
-        }
-      });
-    }
-  } catch (error) {
-    console.error('Error parsing projects directory for sitemap:', error);
-  }
+  // 3. Inject Dynamic Project Slugs
+  const projectSlugs = getSlugsFromContent('projects');
+  projectSlugs.forEach((slug) => {
+    routes.push({
+      url: `${BASE_URL}/projects/${slug}`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.8,
+    },);
+  });
 
   return routes;
 }
