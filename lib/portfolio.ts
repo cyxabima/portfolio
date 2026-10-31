@@ -4,7 +4,7 @@ export const profile = {
     location: 'Karachi, Pakistan',
     email: 'ukashaanwerali@gmail.com',
     github: 'https://github.com/cyxabima',
-    linkedin: 'https://www.linkedin.com/in/ukashaanwerali',
+    // linkedin: 'https://www.linkedin.com/in/ukashaanwerali',
     x: 'https://x.com/UkashAnwer',
     tagline:
         'Focused on the boundary between computer architecture, operating systems, and networked backend infrastructure. Building concurrent services, hardware-level implementations, and production systems in C, Go, Python, and TypeScript.'

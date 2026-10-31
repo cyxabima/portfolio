@@ -32,14 +32,14 @@ export default function Contact() {
                     >
                         github.com/cyxabima
                     </Link>
-                    <Link
-                        href={profile.linkedin}
-                        target='_blank'
-                        rel='noreferrer noopener'
-                        className='text-muted-foreground hover:text-foreground underline decoration-1 underline-offset-2 transition-colors'
-                    >
-                        LinkedIn
-                    </Link>
+                    {/* <Link */}
+                    {/*     href={profile.linkedin} */}
+                    {/*     target='_blank' */}
+                    {/*     rel='noreferrer noopener' */}
+                    {/*     className='text-muted-foreground hover:text-foreground underline decoration-1 underline-offset-2 transition-colors' */}
+                    {/* > */}
+                    {/*     LinkedIn */}
+                    {/* </Link> */}
                 </div>
 
                 <ContactForm />

@@ -33,15 +33,15 @@ export default function ContactCta() {
                         GitHub
                         <ArrowUpRight className='h-3.5 w-3.5' />
                     </a>
-                    <a
-                        href={profile.linkedin}
-                        target='_blank'
-                        rel='noreferrer noopener'
-                        className='text-muted-foreground hover:text-foreground inline-flex items-center gap-1 text-sm transition-colors'
-                    >
-                        LinkedIn
-                        <ArrowUpRight className='h-3.5 w-3.5' />
-                    </a>
+                    {/* <a */}
+                    {/*     href={profile.linkedin} */}
+                    {/*     target='_blank' */}
+                    {/*     rel='noreferrer noopener' */}
+                    {/*     className='text-muted-foreground hover:text-foreground inline-flex items-center gap-1 text-sm transition-colors' */}
+                    {/* > */}
+                    {/*     LinkedIn */}
+                    {/*     <ArrowUpRight className='h-3.5 w-3.5' /> */}
+                    {/* </a> */}
                 </div>
             </div>
         </section>
