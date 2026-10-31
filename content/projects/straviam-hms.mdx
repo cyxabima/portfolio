@@ -1,0 +1,66 @@
+---
+title: Straviam HMS
+summary: Healthcare management backend and client built around a normalized PostgreSQL schema covering patients, doctors, services, invoices, payments, rooms, and role-scoped staff workflows.
+category: Healthcare Systems & Database Engineering
+stack:
+  - PostgreSQL
+  - Drizzle ORM
+  - Express 5
+  - TypeScript
+  - React
+  - Docker / Caddy
+author: 'Ukasha'
+publishedAt: '2026-07-13'
+featured: true
+featuredGroup: backend
+order: 5
+links:
+  - label: Backend repository
+    href: https://github.com/Straviam/HMS-Backend
+  - label: Frontend repository
+    href: https://github.com/Straviam/HMS-Frontend
+  - label: Live client
+    href: https://hms-frontend-gray-eight.vercel.app
+keywords:
+  - Hospital Management System
+  - Healthcare Backend
+  - PostgreSQL
+  - Drizzle ORM
+  - Express 5
+  - TypeScript
+  - RBAC
+  - JWT
+  - Invoice Management
+  - Room Booking
+  - Docker
+  - Caddy
+---
+
+## Overview
+
+Straviam HMS is a hospital management system split into an Express 5 API and a React client. The backend owns patient registration, doctor scheduling, service catalogues, invoices and payments, room bookings, and staff access control.
+
+## Database design
+
+The PostgreSQL schema is managed with Drizzle ORM and migration files. Core tables include:
+
+- `patients`, `doctors`, `doctor_timings`
+- `service_types`, `services`
+- `invoices`, `payments`
+- `rooms`, `room_booking`
+- `transactions` with typed `doctor_transactions`, `room_transactions`, and `service_transactions` subtypes
+- `users` with six staff roles
+
+Foreign keys, unique constraints, and explicit transaction subtypes keep billing and booking records consistent.
+
+## Backend
+
+- Express 5 and TypeScript
+- Drizzle ORM with checked-in SQL migrations
+- JWT authentication stored in HTTP-only cookies
+- Role-based access for ADMIN, DOCTOR, RECEPTIONIST, OPD_OPERATOR, MANAGEMENT, and ACCOUNTANT
+- Patient registry, invoice/payment flow, room booking, and transaction audit endpoints
+
+## Deployment
+
+The client is containerized with a multi-stage Docker build and served by Caddy, which also reverse-proxies `/api/v1` to the backend and handles SPA fallback routing.

@@ -22,11 +22,11 @@ export default function PostsWithSearch({ posts }: { posts: PostMetadata[] }) {
 
     return (
         <div>
-            <div className='mb-12 flex items-center gap-3'>
+            <div className='mb-10 flex items-center gap-3'>
                 <Input
                     type='text'
                     placeholder='Search posts...'
-                    className='h-9 w-full sm:w-1/2'
+                    className='h-10 w-full sm:w-1/2'
                     value={query}
                     onChange={e => setQuery(e.target.value)}
                 />

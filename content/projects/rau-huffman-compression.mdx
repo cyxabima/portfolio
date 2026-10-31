@@ -1,0 +1,55 @@
+---
+title: RAU — Lossless Huffman File Compression Utility
+summary:
+    Desktop compression engine implementing frequency analysis, priority-queue
+    Huffman tree construction, and custom bit-packed binary serialization.
+category: Algorithms & Data Structures
+stack:
+    - Python
+    - Bit-Level I/O
+    - Huffman Trees
+    - Electron
+author: 'Ukasha'
+publishedAt: '2026-03-10'
+featured: true
+featuredGroup: systems
+order: 5
+links:
+    - label: Repository
+      href: https://github.com/Dev-Rayyan-Ahmed/RAU_File_Compression_Tool
+keywords:
+    - Huffman Coding
+    - File Compression
+    - Lossless Compression
+    - Priority Queue
+    - Min Heap
+    - Bit Packing
+    - Python
+    - Electron
+    - Data Structures
+---
+
+## Overview
+
+RAU is a lossless text-file compressor built around a from-scratch Huffman
+coding pipeline. The project implements frequency analysis, tree construction,
+code assignment, and binary serialization without relying on a compression
+library.
+
+## Implementation
+
+- Byte-frequency analysis over the input stream
+- Min-heap priority queue for Huffman tree construction
+- Variable-length code assignment from tree traversal
+- Custom bit-level writer and reader for packed code streams
+- Serialized tree header for deterministic decompression
+- Electron desktop shell for filesystem access
+
+## Stack
+
+Python for the compression core, Electron and Node.js for the desktop
+application, with HTML/CSS/JavaScript for the interface.
+
+## Team
+
+Built with Rayyan Ahmed (project lead) and Abdul Mueed.

@@ -1,0 +1,54 @@
+---
+title: Bookly
+summary: FastAPI and SQLModel REST service with async PostgreSQL, Alembic migrations, Redis-backed token revocation, OAuth2 email verification, and relational tags and reviews.
+category: Backend API & Data Infrastructure
+stack:
+  - FastAPI
+  - SQLModel
+  - PostgreSQL
+  - Redis
+  - Alembic
+  - OAuth2
+author: 'Ukasha'
+publishedAt: '2025-06-26'
+featured: true
+featuredGroup: backend
+order: 9
+links:
+  - label: Repository
+    href: https://github.com/cyxabima/Bookly
+keywords:
+  - Bookly
+  - FastAPI
+  - SQLModel
+  - PostgreSQL
+  - Redis
+  - Alembic
+  - OAuth2
+  - JWT
+  - Email Verification
+  - REST API
+  - Book Reviews
+---
+
+## Overview
+
+Bookly is a REST API for managing books, reviews, tags, and user accounts. It is implemented as a modular FastAPI service with separate books, reviews, tags, and users packages.
+
+## Backend architecture
+
+- FastAPI with Pydantic request and response schemas
+- Async PostgreSQL access through SQLModel and SQLAlchemy
+- Alembic migrations for schema evolution
+- JWT authentication with Redis-backed JTI revocation
+- OAuth2 password flow with email verification and password reset tokens
+- Role field on users plus ownership checks on books and reviews
+- Many-to-many book/tag relationship through an explicit join table
+
+## Data model
+
+Core entities are `Book`, `Tag`, `Review`, `User`, and the `BookTag` join table. Reviews and tags are linked relationally to books, with eager loading configured for list queries.
+
+## Stack
+
+Python, FastAPI, SQLModel, PostgreSQL, Redis, Alembic, `fastapi-mail`, and Uvicorn.

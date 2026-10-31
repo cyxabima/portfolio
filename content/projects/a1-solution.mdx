@@ -1,57 +1,61 @@
 ---
-  title: A1 Solution
-  summary: A full-featured inventory and sales management system for small businesses built with Next.js, Express, and MongoDB.
-  image: /images/projects/a1-solutions/dashboard.png
-  author: 'Ukasha'
-  publishedAt: '2026-02-01'
-  keywords:
+title: A1 Solution
+summary: Inventory and sales platform built with Express 5, TypeScript, MongoDB, and Zod, with FIFO stock movements, invoice/payment transactions, and JWT cookie auth.
+category: Enterprise Inventory & Sales Systems
+stack:
+  - Express 5
+  - TypeScript
+  - MongoDB
+  - Zod
+  - Next.js
+author: 'Ukasha'
+publishedAt: '2026-02-01'
+featured: true
+featuredGroup: backend
+order: 7
+links:
+  - label: Live demo
+    href: https://a1-solutions.vercel.app/
+  - label: Backend repository
+    href: https://github.com/cyxabima/IPOS-API
+  - label: Frontend repository
+    href: https://github.com/cyxabima/IPOS-Frontend
+keywords:
   - A1 Solution
-  - Business Management System
   - Inventory Management
   - Sales Management
-  - Next.js Frontend
-  - Express.js Backend
-  - MongoDB Database
+  - Express 5
   - TypeScript
-  - MVC Architecture
-  - Session Authentication
-  - Shadcn UI
-  - Full Stack Web App
-  - Small Business Software
+  - MongoDB
+  - Zod
+  - JWT
+  - FIFO Stock
+  - Invoice Management
+  - Next.js
 ---
 
-> 🚧 **Work in Progress:** This project is currently under active development.
+## Overview
 
-A1 Solution is a comprehensive Business Management System designed specifically to streamline operations for small businesses. It serves as a centralized platform for managing inventory, tracking sales, and handling supplier relationships. The application is built on a scalable full-stack architecture, utilizing a Next.js frontend and an Express.js backend integrated with MongoDB.
+A1 Solution is an inventory and sales management system for small businesses, built as a decoupled Next.js client and Express 5 API. The backend owns stock, suppliers, customers, sales, and billing logic.
 
-## Backend Highlights
+## Backend architecture
 
-- Engineered using Node.js and Express.js, strictly adhering to robust MVC (Model-View-Controller) architecture for clean, maintainable, and modular code.
-- Data persistence is handled via MongoDB, featuring custom-designed, modular schemas tailored for complex inventory hierarchies, billing records, and supplier management.
-- Implemented secure, session-based authentication to ensure strict data privacy and to protect sensitive business endpoints from unauthorized access.
-- Developed robust RESTful APIs to facilitate seamless communication between the client dashboard and the database.
+- Express 5 and TypeScript with modular controllers, routes, and middleware
+- MongoDB persistence with transaction support for stock and invoice consistency
+- FIFO batch stock tracking and movement history
+- Invoice lifecycle with draft and confirmed states
+- Zod validation at request boundaries
+- JWT authentication stored in HTTP-only cookies
+- Centralized API response and error envelopes
 
-## Frontend Features
+## Scope
 
-- Built with Next.js and TypeScript to deliver a highly responsive, type-safe, and performant user interface.
-- Styled entirely using Shadcn UI and Tailwind CSS, providing a modern, accessible, and intuitive dashboard experience.
-- Dynamic, real-time data tables and interactive forms that allow business owners to monitor stock levels and process sales without page reloads.
+- Product catalogue with categories, brands, and units
+- Supplier and customer records
+- Stock intake, FIFO movement, and low-stock visibility
+- Sales invoices, payments, and cancellation
+- Dashboard and report aggregates
 
-## Main Modules
+## Stack
 
-- Inventory Management: Comprehensive tracking of product stock levels, categorization, and automated low-stock alerts.
-- Sales and Billing: Streamlined point-of-sale functionality with automated invoice generation and historical sales tracking.
-- Supplier Management: Maintain detailed records of vendors, track incoming purchase orders, and manage supply chain logistics securely.
-- User Access Control: Secure login portal restricting dashboard access entirely to authorized business personnel.
-
-## Technologies and Skills
-
-- Node.js, Express.js, Next.js, MongoDB, TypeScript, JavaScript
-- MVC Architecture, REST APIs, Shadcn UI, Tailwind CSS, Database Design
-- Session-based Authentication, Full-Stack Development, Business Logic Implementation
-
----
-
-
-> Live Demo:
-> [A1 Solution Live](https://a1-solutions.vercel.app/)
+Next.js, TypeScript, Express 5, MongoDB, Zod, and JWT.

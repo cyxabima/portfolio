@@ -1,24 +1,48 @@
 import Image from 'next/image'
+import Link from 'next/link'
+import { ArrowDown, ArrowUpRight } from 'lucide-react'
+
 import authorImage from '@/public/images/authors/author.jpeg'
+import { Button } from '@/components/ui/button'
+import { profile } from '@/lib/portfolio'
 
 export default function Intro() {
     return (
-        <section className='flex flex-col-reverse items-start gap-x-10 gap-y-4 pb-24 md:flex-row md:items-center'>
-            <div className='mt-2 flex-1 md:mt-0'>
-                <h1 className='title no-underline'>Hey, I&#39;m Ukasha Anwer Ali.</h1>
-                <p className='mt-3 font-light text-muted-foreground'>
-                    I&#39;m a computer systems and software engineering student based in Karachi, Pakistan. I&#39;m
-                    passionate about learning new technologies and sharing knowledge with
-                    others.
-                </p>
+        <section className='flex flex-col-reverse items-start gap-x-14 gap-y-8 md:flex-row md:items-center'>
+            <div className='flex-1'>
+                <p className='eyebrow'>{profile.role}</p>
+                <h1 className='title mt-4 text-4xl leading-[1.08] md:text-5xl'>
+                    {profile.name}
+                </h1>
+                <p className='body-copy mt-6 max-w-xl'>{profile.tagline}</p>
+
+                <div className='mt-8 flex flex-wrap items-center gap-3'>
+                    <Button asChild size='lg'>
+                        <Link
+                            href={profile.github}
+                            target='_blank'
+                            rel='noreferrer noopener'
+                        >
+                            GitHub
+                            <ArrowUpRight className='h-4 w-4' />
+                        </Link>
+                    </Button>
+                    <Button asChild variant='outline' size='lg'>
+                        <Link href='#work'>
+                            Selected Work
+                            <ArrowDown className='h-4 w-4' />
+                        </Link>
+                    </Button>
+                </div>
             </div>
-            <div className='relative'>
+
+            <div className='relative shrink-0'>
                 <Image
-                    className='flex-1 rounded-lg grayscale'
+                    className='h-[180px] w-[180px] rounded-md object-cover grayscale'
                     src={authorImage}
-                    alt='Ukasha'
-                    width={175}
-                    height={175}
+                    alt={profile.name}
+                    width={180}
+                    height={180}
                     priority
                 />
             </div>

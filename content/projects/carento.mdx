@@ -1,74 +1,59 @@
 ---
-  title: Carento
-  summary: A full-stack Multi Vendor Car Rental System built with react and fastapi.
-  image: /images/projects/carento.jpg
-  author: 'Ukasha'
-  publishedAt: '2025-06-02'
-  keywords:
+title: Carento
+summary: Multi-vendor car rental platform with an async FastAPI/PostgreSQL backend, custom JWT authentication, and role-scoped vendor and customer APIs.
+category: Distributed Application Systems
+stack:
+  - FastAPI
+  - SQLModel
+  - PostgreSQL
+  - JWT / RBAC
+  - React
+author: 'Ukasha'
+publishedAt: '2025-06-02'
+featured: true
+featuredGroup: backend
+order: 8
+links:
+  - label: Live demo
+    href: https://carento-client-site.vercel.app/
+  - label: Client repository
+    href: https://github.com/cyxabima/Carento-client-site
+  - label: Server repository
+    href: https://github.com/cyxabima/Carento-Server-API
+keywords:
   - Carento
-  - Carento App
-  - Carento Booking Platform
-  - Carento Multi-vendor
-  - Multi-vendor Car Booking Platform
-  - Car Rental App with Admin Dashboard
-  - Online Car Booking System
-  - Rent Cars Online App
-  - Car Reservation Software
-  - Car Sharing Web App
-  - Vehicle Booking Portal
-  - FastAPI Car Booking App
-  - React Multi-vendor Platform
-  - Car Booking System with React and FastAPI
-  - Python Backend Car Rental Project
-  - Full Stack Car Booking App
-  - JWT Auth Car Booking System
-  - Async FastAPI Car App
-  - Clean Architecture Car Booking Platform
-  - Modular Backend with Python FastAPI
-  - Modern UI Car Booking App
-  - Admin Dashboard Car Rental App
-  - Computer Systems Engineering Project
-  - Final Year Project Car Booking
-  - Student Full Stack Project
+  - Car Rental Platform
+  - Multi-vendor
+  - FastAPI
+  - SQLModel
+  - PostgreSQL
+  - Async Python
+  - JWT
+  - Role-Based Access Control
+  - REST API
 ---
 
+## Overview
 
-Carento is a **modern, OOP-based full-stack multi-vendor car booking platform** built using **FastAPI** (Python) on the backend and **React.js** on the frontend. It follows a **clean, scalable, and modular architecture**, organizing the application with object-oriented design principles for API logic, services, and database models.
+Carento is a multi-vendor car rental platform with an async FastAPI backend and a React client. Vendors manage vehicle listings and bookings; customers search vehicles, reserve them, leave reviews, and maintain a wallet balance.
 
-## 🔐 Backend Highlights
+## Backend architecture
 
-- OOP-based **FastAPI** backend with service and model layers.
-- Asynchronous PostgreSQL integration using **SQLModel**.
-- Custom JWT **authentication & authorization** without external libraries.
-- **Role-based access control** (Vendor / Customer).
-- Versioned **RESTful APIs** following best practices.
+- FastAPI with separate route, service, and model layers
+- Async PostgreSQL access through SQLModel
+- Custom JWT authentication and authorization without an external auth service
+- Role-based access control for Vendor and Customer scopes
+- Versioned REST endpoints under `/api/v1`
+- Booking, review, and wallet transaction domains
 
-## 💡 Frontend Features
+## Scope
 
-- Built with **React.js** and styled using **ShadCN UI**.
-- **React Router DOM** with nested layouts powered by `Outlet`.
-- **Context API** to manage JWT auth and route protection.
-- **Role-aware dashboards** that dynamically change based on user type.
+- Vehicle CRUD scoped to the owning vendor
+- Customer and vendor registration, login, and profile management
+- Booking history and vendor-side reservation views
+- Authenticated vehicle reviews
+- Wallet balance and transaction history
 
-## 📚 Main Modules
+## Stack
 
-- **Vehicles**: Vendor-specific CRUD for car listings.
-- **Auth**: Signup, login, profile management, account deletion (Customer & Vendor).
-- **Bookings**: Car booking system with vendor & customer-specific histories.
-- **Reviews**: Authenticated user review system for vehicles.
-- **Wallet**: Add balance and view transaction history.
-
-## 🛠️ Technologies & Skills
-
-- Python · FastAPI · React.js · PostgreSQL · SQLModel  
-- JavaScript · OOP · REST APIs · ShadCN · Full-Stack Architecture  
-- Authentication · Role-based Access Control · Async Programming
-
----
-
-> **GitHub Repos:**  
-> 🔗 [Client Code](https://github.com/cyxabima/Carento-client-site)  
-> 🔗 [Server Code](https://github.com/cyxabima/Carento-Server-API)
-
-> **Live Demo:**  
-> 🌐 [carento](https://carento-client-site.vercel.app/)
+Python, FastAPI, PostgreSQL, SQLModel, React, and ShadCN UI.

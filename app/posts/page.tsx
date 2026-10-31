@@ -5,9 +5,9 @@ export default async function PostsPage() {
     const posts = await getPosts()
 
     return (
-        <section className='pb-24 pt-40'>
+        <section className='pt-32 pb-28 md:pt-36'>
             <div className='container max-w-3xl'>
-                <h1 className='title mb-12'>Posts</h1>
+                <h1 className='title mb-10'>Posts</h1>
 
                 <PostsWithSearch posts={posts} />
             </div>

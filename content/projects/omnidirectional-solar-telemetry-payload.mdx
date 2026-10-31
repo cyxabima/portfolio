@@ -1,0 +1,49 @@
+---
+title: Omnidirectional Solar Telemetry Payload
+summary:
+    Embedded scientific payload for ISSSP integrating multi-axis INA226
+    current/voltage sensing, thermal monitoring, and deterministic SD card
+    logging.
+category: Embedded Systems & Hardware Telemetry
+stack:
+    - C / C++
+    - ESP32-S3
+    - INA226 Sensors
+    - I2C / SPI
+    - Hardware Telemetry
+author: 'Ukasha'
+featured: true
+featuredGroup: systems
+order: 3
+keywords:
+    - ISSSP 2026
+    - Space Science
+    - Scientific Payload
+    - ESP32-S3
+    - INA226
+    - I2C
+    - SPI
+    - Telemetry
+    - Embedded Systems
+    - SD Card Logging
+---
+
+## Overview
+
+The payload was built for the International Space Science and Scientific Payload
+Competition (ISSSP) Track 2. It collects power and environmental telemetry from
+an omnidirectional solar assembly and records the data locally for later
+analysis.
+
+## Implementation
+
+- ESP32-S3 firmware written in C/C++
+- Multi-axis current and voltage measurement through INA226 sensors
+- I2C sensor bus with SPI-based storage
+- Thermal monitoring across the payload
+- Deterministic SD card logging with fixed record layout and flush boundaries
+
+## Result
+
+Track 2 Finalist, International Space Science and Scientific Payload Competition
+(ISSSP 2026).

@@ -1,0 +1,49 @@
+---
+title: Single-Cycle RISC Datapath
+summary:
+    Modeled and simulated a single-cycle RISC processor datapath in Logisim,
+    integrating the ALU, register file, instruction and data memory, and control
+    logic.
+category: Computer Architecture & Digital Logic
+stack:
+    - Logisim
+    - Digital Logic
+    - Datapath Design
+    - Computer Architecture
+author: 'Ukasha'
+featured: true
+featuredGroup: systems
+order: 2
+keywords:
+    - Single-Cycle RISC
+    - RISC Datapath
+    - Logisim
+    - Computer Architecture
+    - ALU
+    - Register File
+    - Control Unit
+    - Datapath Design
+    - Digital Logic
+---
+
+## Overview
+
+A single-cycle RISC processor datapath modeled and simulated in Logisim. Each
+instruction completes in one clock cycle: operands are read from the register
+file, routed through the ALU or memory, and written back before the next cycle
+begins.
+
+## Datapath components
+
+- Program counter and instruction memory
+- Register file with two read ports and one write port
+- ALU with control signals derived from the instruction opcode
+- Data memory for loads and stores
+- Multiplexers selecting ALU operands, write-back source, and next-PC value
+- Control logic mapping instruction fields to datapath selects
+
+## Simulation
+
+The datapath was built and simulated in Logisim. Instruction execution and
+control-signal behavior were verified by stepping the circuit and observing
+register, memory, and ALU outputs.

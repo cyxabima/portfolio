@@ -1,0 +1,58 @@
+---
+title: Concurrent RSS Feed Aggregation Engine
+summary:
+    High-throughput Go feed scraper and REST service using bounded worker pools,
+    channels, and sqlc-generated PostgreSQL access for concurrent XML parsing
+    and storage.
+category: Concurrent Systems / Backend
+stack:
+    - Go
+    - Goroutines
+    - SQLC
+    - PostgreSQL
+author: 'Ukasha'
+publishedAt: '2025-12-18'
+featured: true
+featuredGroup: systems
+order: 4
+links:
+    - label: Repository
+      href: https://github.com/cyxabima/rss-aggregator
+keywords:
+    - Go
+    - Golang
+    - RSS Aggregator
+    - Concurrent Scraper
+    - Worker Pool
+    - Goroutines
+    - SQLC
+    - PostgreSQL
+    - Goose
+    - REST API
+---
+
+## Overview
+
+GopherFeed is a Go service that aggregates RSS and Atom feeds into a shared
+PostgreSQL database. Users register, add feeds, and follow feeds created by
+other users. A background scraper continuously fetches and parses feed documents
+without blocking the HTTP API.
+
+## Concurrency model
+
+- Bounded worker pool for feed fetching and XML parsing
+- Channel-based handoff between the scheduler and parse workers
+- Fixed concurrency ceiling to control connection and memory pressure
+- Per-feed fetch intervals persisted in PostgreSQL
+- Graceful shutdown of in-flight workers
+
+## Data layer
+
+- PostgreSQL with `sqlc` for type-safe query generation
+- `goose` migrations for schema versioning
+- `chi` router and API-key authentication
+- Separate read and write paths for feed metadata and posts
+
+## Stack
+
+Go, PostgreSQL, `sqlc`, `goose`, `chi`, `lib/pq`.

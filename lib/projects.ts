@@ -9,6 +9,13 @@ export type Project = {
     content: string
 }
 
+export type ProjectLink = {
+    label: string
+    href: string
+}
+
+export type FeaturedGroup = 'systems' | 'backend'
+
 export type ProjectMetadata = {
     title?: string
     summary?: string
@@ -17,6 +24,12 @@ export type ProjectMetadata = {
     publishedAt?: string
     slug: string
     keywords?: string[]
+    category?: string
+    stack?: string[]
+    links?: ProjectLink[]
+    featured?: boolean
+    featuredGroup?: FeaturedGroup
+    order?: number
 }
 
 export async function getProjectBySlug(slug: string): Promise<Project | null> {
@@ -36,11 +49,17 @@ export async function getProjects(limit?: number): Promise<ProjectMetadata[]> {
     const projects = files
         .map(file => getProjectMetadata(file))
         .sort((a, b) => {
-            if (new Date(a.publishedAt ?? '') < new Date(b.publishedAt ?? '')) {
-                return 1
-            } else {
-                return -1
+            const aOrder = a.order ?? Number.MAX_SAFE_INTEGER
+            const bOrder = b.order ?? Number.MAX_SAFE_INTEGER
+
+            if (aOrder !== bOrder) {
+                return aOrder - bOrder
             }
+
+            return (
+                new Date(b.publishedAt ?? 0).getTime() -
+                new Date(a.publishedAt ?? 0).getTime()
+            )
         })
 
     if (limit) {
@@ -48,6 +67,14 @@ export async function getProjects(limit?: number): Promise<ProjectMetadata[]> {
     }
 
     return projects
+}
+
+export async function getFeaturedProjects(): Promise<ProjectMetadata[]> {
+    const projects = await getProjects()
+
+    return projects
+        .filter(project => project.featured)
+        .sort((a, b) => (a.order ?? 0) - (b.order ?? 0))
 }
 
 export function getProjectMetadata(filepath: string): ProjectMetadata {

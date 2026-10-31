@@ -1,0 +1,68 @@
+---
+title: Custom 16-Bit CPU ISA & Multi-Cycle Control Unit
+summary:
+    Designed a custom 16-bit Instruction Set Architecture with variable-length
+    16-bit / 32-bit instruction encoding and multi-cycle instruction fetching
+    across dual instruction registers for extended immediate instructions.
+category: Computer Architecture & Digital Logic
+stack:
+    - Digital Logic
+    - RISC-V
+    - Harvard Architecture
+    - FSM Design
+author: 'Ukasha'
+featured: true
+featuredGroup: systems
+order: 1
+keywords:
+    - 16-bit CPU
+    - Variable-Length ISA
+    - 32-bit Instructions
+    - Extended Immediates
+    - Dual Instruction Registers
+    - Custom ISA
+    - Computer Architecture
+    - Harvard Architecture
+    - Multi-cycle CPU
+    - Finite State Machine
+    - Digital Logic
+    - RISC-V
+    - Control Unit
+---
+
+## Overview
+
+This project implements a custom 16-bit Instruction Set Architecture from the
+instruction encoding through the datapath and control logic. Instructions use a
+variable-length format: 16-bit base encodings and 32-bit forms that carry
+extended immediates. The design uses separate instruction and data memory.
+
+## Instruction encoding
+
+The base format keeps the opcode, register fields, and short immediate within a
+single 16-bit word. Extended-immediate instructions span two words: the first
+holds the opcode and primary operands, and the second supplies the remaining
+immediate bits. This keeps the common case compact while allowing a wider
+immediate range when an instruction needs it.
+
+## Fetch and control
+
+Because instruction length varies, fetching is multi-cycle. Two instruction
+registers hold the current 16-bit word and, when the opcode indicates an
+extended form, the following word. The control unit sequences fetch, decode,
+operand read, execute, memory, and write-back states, and asserts the selects
+that assemble the full instruction before decode completes.
+
+## Scope
+
+- Custom 16-bit instruction encoding and register model
+- Variable-length 16-bit and 32-bit instruction formats
+- Dual instruction registers for extended immediates
+- Multi-cycle fetch with FSM-based control
+- Separate instruction and data memory
+- ALU, register file, and memory interface integration
+- Digital-logic design and simulation
+
+The design is grounded in the instruction-cycle and datapath concepts used by
+RISC-V implementations, but with a deliberately reduced, variable-length ISA for
+direct control over every state transition.
